@@ -1,26 +1,35 @@
 package gui;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.LinkedList;
 
 import javax.swing.JPanel;
 
 import entities.Entity;
 
-public class GameScreen extends JPanel
+public class GameScreen extends JPanel implements ActionListener
 {
 	
 	/**
-	 * this was required by eclipse, dunno y
+	 * 
 	 */
-	private static final long serialVersionUID = 8467739566752896272L;
+	private static final long serialVersionUID = 7794823291817903400L;
 	private final Color BG= Color.BLACK;	//background color
 	
 	private LinkedList<Entity> entities;	//holds references to objects to render
 	
-	GameScreen()
+	GameScreen(int w, int h)
 	{
 		entities = new LinkedList<>();
+		
+		setSize(w, h);
+		this.setVisible(true);
+		
+		this.setBackground(Color.black);
+
 	}
 	
 	public void addToScreen(Entity e)
@@ -34,7 +43,8 @@ public class GameScreen extends JPanel
 	}
 	
 	// updates all entities' graphics, must be public -> default
-	public void paintComponent(Graphics g) {
+	public void paintComponent(Graphics g) 
+	{
 		super.paintComponent(g);
 		//this.setBackground(BG);
 		
@@ -47,7 +57,14 @@ public class GameScreen extends JPanel
 			g.drawImage(o.getImg(), (int)o.getX(), (int)o.getY(), null);
 		}*/
 		
-		g.dispose();
+		//t.start();
+		System.out.println("here");
     }
+
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+		//repaint();
+	}
 	
 }

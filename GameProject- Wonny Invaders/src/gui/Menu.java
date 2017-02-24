@@ -10,10 +10,6 @@ import javax.swing.JPanel;
 public class Menu extends JPanel
 {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 4631518459889002716L;
 	private JButton[] buttons;
 	
 	Menu(Interface i, JPanel p, int w, int h)

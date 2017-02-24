@@ -6,7 +6,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 public class Interface extends JFrame implements ActionListener, KeyListener
@@ -20,7 +22,8 @@ public class Interface extends JFrame implements ActionListener, KeyListener
 	final int WIDTH = 700;
 	final int HEIGHT = 500;
 	
-	private GameState state;
+	private GameState state;	//check enum
+	private JPanel currentPanel;//reference to current panel in even of game state change
 	
 	Interface()
 	{
@@ -30,25 +33,33 @@ public class Interface extends JFrame implements ActionListener, KeyListener
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		
-		toGame();
+		setVisible(true);
+
+		toMenu();
+	}
+
+	private void toGame()
+	{
+	
+		GameScreen gs = new GameScreen(WIDTH, HEIGHT);
+		this.add(gs);
 		
-		/*JPanel p = new JPanel(new GridLayout(2, 1, 20, 20));
+		currentPanel = gs;
+		state = GameState.GAME;
+	}
+	
+	private void toMenu()
+	{
+
+		
+		JPanel p = new JPanel(new GridLayout(2, 1, 20, 20));
 		Menu m = new Menu(this, p, WIDTH, HEIGHT);
 		p.setBorder(new EmptyBorder(WIDTH/4,50,50,50));
 		m.add(p);
 		this.add(m);
 		
-		state = GameState.MENU;*/
-		
-		setVisible(true);
-	}
-
-	private void toGame()
-	{
-		this.removeAll();
-		
-		GameScreen gs = new GameScreen();
-		this.add(gs);
+		currentPanel = m;
+		state = GameState.MENU;
 	}
 	
 	public void actionPerformed(ActionEvent e)
@@ -60,14 +71,13 @@ public class Interface extends JFrame implements ActionListener, KeyListener
 			JButton source = (JButton)e.getSource();
 			if(source.getText().equals("Play"))
 			{
+				this.remove(currentPanel);
 				toGame();
 			}
 			break;
 		case GAME:
 			break;
 		}
-
-		
 	}
 
 	@Override
