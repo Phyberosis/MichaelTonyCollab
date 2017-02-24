@@ -159,7 +159,7 @@ class MinMax implements Runnable
                     LinkedList<byte[][]> children = getChildScenariosOfTile(x, y, s, histP, deep);
                     if(children.isEmpty())
                     {
-                    	return calculateScore(s); 
+                    	return calculateScore(s);
                     }
                     for (byte[][] child :children)
                     {
