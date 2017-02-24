@@ -35,7 +35,7 @@ public class GameScreen extends JPanel
 	
 	// updates all entities' graphics, must be public -> default
 	public void paintComponent(Graphics g) {
-		super.paintComponents(g);
+		super.paintComponent(g);
 		//this.setBackground(BG);
 		
 		//debug test
