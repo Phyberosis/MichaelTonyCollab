@@ -2,12 +2,12 @@ package entities;
 
 import java.awt.Image;
 
-public class Enemy extends Entity {
+public class Player extends Entity {
 	int health;
 	double speed;
 	double accel;
 	
-	public Enemy(double nX, double nY, double nLength, double nWidth, int nId, int nHealth, Image M) {
+	public Player(double nX, double nY, double nLength, double nWidth, int nId, int nHealth, Image M) {
 		x = nX;
 		y = nY;
 		length = nLength;
@@ -16,7 +16,20 @@ public class Enemy extends Entity {
 		health = nHealth;
 		image = M;
 		speed = 0;
-		accel = 0;
+		accel = 5;
+	}
+	
+	public void moveUp(double s){
+		y+=s;
+	}
+	public void moveDown(double s){
+		y-=s;
+	}
+	public void moveLeft(double s){
+		x -= s;
+	}
+	public void moveRight(double s){
+		x += s;
 	}
 	
 	//Getter Methods
@@ -48,7 +61,6 @@ public class Enemy extends Entity {
 		return this.accel;
 	}
 	
-	
 	//Setter Methods
 	public void setX(double nX){
 		this.x = nX;
@@ -72,7 +84,7 @@ public class Enemy extends Entity {
 		this.image = M;
 	}
 	public void setSpeed(double s){
-		this.speed = s;
+		this.speed = accel * s;
 	}
 	public void setAccel(double a){
 		this.accel = a;
