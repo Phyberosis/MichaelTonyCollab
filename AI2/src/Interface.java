@@ -95,6 +95,7 @@ public class Interface extends JFrame implements KeyListener, ActionListener{
 					taskHandler.taskLst.add(tasks.newInput);
 					taskHandler.taskData.add(quote);
 					taskHandler.blnPause = false;
+					//System.out.println("task sent");
 				} else {
 					
 					mimicData mimicData = new mimicData();

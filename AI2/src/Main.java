@@ -5,7 +5,7 @@ public class Main {
 	//public static Object hubAnchor = new Object();
 	//public static ArrayList<String> log = new ArrayList<String>();
 	
-	public static void main(String arge[]) throws IOException{
+	public static void main(String args[]) throws IOException{
 		
 		new log();
 		new Interface();
