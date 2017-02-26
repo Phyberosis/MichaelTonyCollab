@@ -10,7 +10,7 @@ public class Window extends Canvas
 
 	/**
 	 *  a bare bones window
-	 *///
+	 */
 	private static final long serialVersionUID = -4810618286807932601L;
 	
 	public Window(int w, int h, String title, Game g)
