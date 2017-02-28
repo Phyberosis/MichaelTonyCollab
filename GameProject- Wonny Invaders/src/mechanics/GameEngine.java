@@ -25,12 +25,6 @@ public class GameEngine {
 		gameState = new Menu(b);
 	}
 
-	//not used
-	public void toExit()
-	{
-		b.end();
-	}
-
 	public void tick(double dt)
 	{
 		gameState.tick(dt);

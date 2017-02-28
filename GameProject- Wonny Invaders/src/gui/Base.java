@@ -22,13 +22,12 @@ public class Base extends Canvas implements Runnable, MouseListener
 	private Thread gameThread;			// the game process -> separate from base thread that runs the window etc
 	boolean running;
 	
-	private Window w;
 	private GameEngine ge;	
 	
 	public Base()
 	{
 		running = false;
-		w = new Window(WIDTH, HEIGHT, "Wonhu Invaders", this);	//this begins the game loop -> calls begin
+		new Window(WIDTH, HEIGHT, "Wonhu Invaders", this);	//this begins the game loop -> calls begin
 
 		/**
 		 * NOTHING ELSE CAN GO HERE, PUT IN SETUP INSTEAD
@@ -71,17 +70,11 @@ public class Base extends Canvas implements Runnable, MouseListener
 			e.printStackTrace();
 		}
 		
-		w.exit();
 	}
 	
 	private void render()
 	{
 		BufferStrategy bs = this.getBufferStrategy();
-		if(bs == null)
-		{
-			this.createBufferStrategy(3);
-			return;
-		}
 		
 		Graphics g = bs.getDrawGraphics();
 		
@@ -102,6 +95,7 @@ public class Base extends Canvas implements Runnable, MouseListener
 		long dt = 0;
 		int frames = 0;
 		double dSec = 0;
+		this.createBufferStrategy(3);
 		
 		while(running)
 		{
@@ -117,7 +111,6 @@ public class Base extends Canvas implements Runnable, MouseListener
 				render();		// graphics update cycle
 				frames++;
 			}
-			
 
 			if(System.currentTimeMillis() - lastFrame > 1000) // one second has passed
 			{
@@ -126,7 +119,6 @@ public class Base extends Canvas implements Runnable, MouseListener
 				System.out.println("Last tick time: " + Math.floor((dSec*1000) * 10000) / 10000 + "ms");
 				frames = 0;
 			}
-			
 		}
 	}
 

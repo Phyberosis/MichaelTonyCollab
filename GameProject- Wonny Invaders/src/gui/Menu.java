@@ -40,7 +40,10 @@ public class Menu extends State
 		{
 			if(ent.imageIndex == ((RoundButton)ent).MOUSECLICKED)
 			{
-				//b.running = false;
+				if(((RoundButton)ent).text.equals("Exit"))
+				{
+					System.exit(0);
+				}
 			}
 		}
 	}
