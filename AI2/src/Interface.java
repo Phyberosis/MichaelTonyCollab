@@ -140,8 +140,8 @@ public class Interface extends JFrame implements KeyListener, ActionListener{
 			taskHandler.blnPause = false;
 			
 		} else {
-			neuronHandler.sav();
-			memoryHandler.sav();
+			//neuronHandler.sav();
+			//memoryHandler.sav();
 			System.exit(0);
 		}
 	}

@@ -13,7 +13,7 @@ public class Window extends Canvas
 	 */
 	private static final long serialVersionUID = -4810618286807932601L;
 	
-	public Window(int w, int h, String title, Game g)
+	public Window(int w, int h, String title, Base b)
 	{
 		JFrame f = new JFrame(title);
 		
@@ -25,9 +25,14 @@ public class Window extends Canvas
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setResizable(false);
 		f.setLocationRelativeTo(null);
-		f.add(g);
+		f.add(b);
 		f.setVisible(true);
-		g.start();
+		b.begin();
+	}
+	
+	public void exit()
+	{
+		System.exit(0);
 	}
 	
 }

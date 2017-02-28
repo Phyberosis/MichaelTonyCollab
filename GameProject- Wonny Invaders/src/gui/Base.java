@@ -1,55 +1,53 @@
 package gui;
 
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferStrategy;
 
-public class Game extends Canvas implements Runnable
+import mechanics.GameEngine;
+
+public class Base extends Canvas implements Runnable, MouseListener
 {
 
 	/**
-	 * 
+	 * "main" class that holds references to all essential objects
+	 * contains game loop
 	 */
 	private static final long serialVersionUID = 8499272734587456621L;
 	
-	public static final int WIDTH = 640, HEIGHT = WIDTH / 12*9; //12 by 9 aspect ratio
+	public final int WIDTH = 960, HEIGHT = WIDTH / 12*9; //12 by 9 aspect ratio
 	
 	private Thread gameThread;			// the game process -> separate from base thread that runs the window etc
-	private boolean running = false;
+	boolean running;
 	
-	//private Handler handler;			//stand in game engine type class
-	//private boolean doneRendering = true;
+	private Window w;
+	private GameEngine ge;	
 	
-	//private FrameHandler fh;
-	
-	public Game()
+	public Base()
 	{
-		new Window(WIDTH, HEIGHT, "Wonhu Invaders", this);
-		
+		running = false;
+		w = new Window(WIDTH, HEIGHT, "Wonhu Invaders", this);	//this begins the game loop -> calls begin
+
 		/**
 		 * NOTHING ELSE CAN GO HERE, PUT IN SETUP INSTEAD
 		 */
-		
-		/*
-		fh = new FrameHandler(this);
-		fh.start();*/
 	}
 	
 	private void setup()
 	{
-		//handler = new Handler();
-		
-		//handler.addObj(new Player(100, 100, ID.Player));
+		ge = new GameEngine(this);
+		this.addMouseListener(this);
 	}
 	
 	public static void main(String args[])
 	{
-		new Game();
+		new Base();
 	}
 	
 	//begin game
-	public synchronized void start()
+	public void begin()
 	{
 		setup();
 		
@@ -60,24 +58,20 @@ public class Game extends Canvas implements Runnable
 	}
 	
 	//end game
-	public synchronized void stop()
+	public void end()
 	{
 		//fh.stop();
 		
 		try
 		{
 			gameThread.join();
-			
 			running = false;
 		}catch(Exception e)
 		{
 			e.printStackTrace();
 		}
-	}
-	
-	private void tick(Double dt)
-	{
-		//handler.tick(dt);
+		
+		w.exit();
 	}
 	
 	private void render()
@@ -90,15 +84,15 @@ public class Game extends Canvas implements Runnable
 		}
 		
 		Graphics g = bs.getDrawGraphics();
-		g.setColor(Color.black);
-		g.fillRect(0,  0,  WIDTH,  HEIGHT);
 		
+		ge.render(g);
 		//handler.render(g);
 		
 		g.dispose();
 		bs.show();
 	}
 	
+	//the game loop -> tick and render
 	@Override
 	public void run()
 	{
@@ -116,11 +110,11 @@ public class Game extends Canvas implements Runnable
 			lastTime = now;
 			
 			dSec = dt/1000000000.0;
-			tick(dSec);		// computation update cycle for game mechanics
+			ge.tick(dSec);		// computation update cycle for game mechanics
 			
 			if(running)
 			{
-				render();	// graphics update cycle
+				render();		// graphics update cycle
 				frames++;
 			}
 			
@@ -129,12 +123,46 @@ public class Game extends Canvas implements Runnable
 			{
 				lastFrame += 1000;
 				System.out.println("FPS: " + frames);
-				System.out.println("Last tick time: " + dSec + "s");
+				System.out.println("Last tick time: " + Math.floor((dSec*1000) * 10000) / 10000 + "ms");
 				frames = 0;
 			}
 			
 		}
-		stop();
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e)
+	{
+	
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e)
+	{
+		ge.mouseDown(e);
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e)
+	{
+		ge.mouseUp(e);
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 	
 	/*
