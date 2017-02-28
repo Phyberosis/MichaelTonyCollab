@@ -100,6 +100,7 @@ public class RoundButton extends Entity
 		g.setColor(Color.BLACK);
 		g.setFont(font);
 		g.drawString(text, x - textOffsetX, y + textOffsetY);
+		g.drawString(text, x - textOffsetX, y + textOffsetY);
 	}
 
 	//Getter Methods
