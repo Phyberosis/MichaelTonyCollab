@@ -18,12 +18,11 @@ public abstract class Entity {
 	public abstract void render(Graphics g);
 	
 	//Getter Methods
-	/*public abstract double getX();
+	public abstract double getX();
 	public abstract double getY();
 	public abstract double getLength();
 	public abstract double getWidth();
-	public abstract int getID();
-	public abstract Image getImage();
+	public abstract EntID getID();
 	
 	//Setter Methods
 	public abstract void setX(double X);
@@ -31,7 +30,5 @@ public abstract class Entity {
 	public abstract void setLength(double Length);
 	public abstract void setWidth(double width);
 	public abstract void setID(int Id);
-	public abstract void setImage(Image i);*/
 
-	
 }
