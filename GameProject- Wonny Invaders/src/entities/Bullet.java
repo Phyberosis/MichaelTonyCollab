@@ -2,13 +2,14 @@ package entities;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Point;
 
 public class Bullet extends Entity {
 	int damage;
 	double speed;
 
-	public Bullet(double nX, double nY, double nLength, double nWidth, int nId, int nDamage) {
-		super(EntID.BULLET, -1); /**ADD BULLET RESOURCE*/
+	public Bullet(double nX, double nY, int nLength, int nWidth, int nId, int nDamage, int number) {
+		super(EntID.BULLET, -1, number); /**ADD BULLET RESOURCE*/
 		x = nX;
 		y = nY;
 		length = nLength;
@@ -24,10 +25,10 @@ public class Bullet extends Entity {
 	public double getY() {
 		return this.y;
 	}
-	public double getLength() {
+	public int getLength() {
 		return this.length;
 	}
-	public double getWidth() {
+	public int getWidth() {
 		return this.width;
 	}
 	public EntID getID(){
@@ -47,10 +48,10 @@ public class Bullet extends Entity {
 	public void setY(double nY){
 		this.y = nY;
 	}
-	public void setLength(double nLength){
+	public void setLength(int nLength){
 		this.length = nLength;
 	}
-	public void setWidth(double nWidth){
+	public void setWidth(int nWidth){
 		this.width = nWidth;
 	}
 	public void setID(int nID){
@@ -75,6 +76,13 @@ public class Bullet extends Entity {
 	{
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Point getLoc()
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

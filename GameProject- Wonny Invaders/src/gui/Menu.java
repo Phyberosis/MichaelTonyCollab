@@ -6,19 +6,20 @@ import java.awt.event.MouseEvent;
 import entities.EntID;
 import entities.Entity;
 import entities.RoundButton;
+import mechanics.GameEngine;
 
 public class Menu extends State
 {
 	private Base b;
-
+	
 	public Menu(Base b)
 	{
 		super(StateID.MENU);
 
 		this.b = b;
-
-		entities.add(new RoundButton("Play", b.WIDTH /2, b.HEIGHT /3 + 125, 125));
-		entities.add(new RoundButton("Exit", b.WIDTH /2, b.HEIGHT *2 /3 + 100, 75));
+		
+		entities.add(new RoundButton("Play", b.WIDTH /2, b.HEIGHT /3 + 125, 125, 0));
+		entities.add(new RoundButton("Exit", b.WIDTH /2, b.HEIGHT *2 /3 + 100, 75, 1));
 	}
 
 	public void mouseDown(MouseEvent e)
@@ -29,23 +30,27 @@ public class Menu extends State
 
 			if(ent.imageIndex == ((RoundButton)ent).MOUSEON)
 			{
-				((RoundButton)ent).imageIndex = ((RoundButton)ent).MOUSECLICKED;
+				((RoundButton)ent).imageIndex = ((RoundButton)ent).MOUSECLICKED; //set mouse down on this button
 			}
 		}
 	}
 
-	public void mouseUp(MouseEvent e)
+	public String mouseUp(MouseEvent e)
 	{
 		for(Entity ent : entities)
 		{
-			if(ent.imageIndex == ((RoundButton)ent).MOUSECLICKED)
+			if(ent.imageIndex == ((RoundButton)ent).MOUSECLICKED) // found button that was clicked on
 			{
 				if(((RoundButton)ent).text.equals("Exit"))
 				{
 					System.exit(0);
+				}else{
+					return "toGame";
 				}
 			}
 		}
+		
+		return null;
 	}
 
 	@Override
@@ -72,6 +77,25 @@ public class Menu extends State
 			ent.render(g);
 		}
 
+	}
+
+	@Override
+	public void setDebugInfo(String str)
+	{
+		setGetDebugInfo(true, str);
+	}
+
+	@Override
+	public String getDebugInfo()
+	{
+		return setGetDebugInfo(false, null);
+	}
+
+	@Override
+	protected String setGetDebugInfo(boolean set, String str)
+	{
+		// TODO Auto-generated method stub
+		return "\nEntities: " + entities.size();
 	}
 
 }

@@ -21,42 +21,39 @@ public class Resources
 			"playerSuccess.png",		// 3
 			"playerDamage.png",			// 4
 			"playerRecovery.png"		// 5
-			};
+	};
 	private BufferedImage[] images;
-	
+
 	public Resources()
 	{
 		//initiate image resource array
 		images = new BufferedImage[imageCount];
-		
+
 		//get address of image folder
-		String address  = "";
-		try {
-			address = Resources.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath().toString();
-			address = address.substring(0, address.lastIndexOf("/") - 3) + "res/";
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
-		}
-		
+		String address  = "src/res/";
+
 		//load images into image array
 		try {
-			
+
 			for(int index = 0; index < imageCount; index++)
-			{
-			    images[index] = ImageIO.read(new File(address + imageAdresses[index]));
-			    index ++;
+			{				
+				//System.out.println(address + imageAdresses[index] + index);
+				File f = new File(address + imageAdresses[index]);
+				//System.out.println(f.getTotalSpace());
+				images[index] = ImageIO.read(new File(address + imageAdresses[index]));
 			}
 		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
-	
+
 	public synchronized BufferedImage getImg(int index)
 	{
 		if (index >= imageCount || index < 0)
 		{
 			return images[0];// error image
 		}
-		
+
 		return images[index];
 	}
 }

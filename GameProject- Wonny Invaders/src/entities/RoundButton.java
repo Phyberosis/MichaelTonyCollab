@@ -25,9 +25,9 @@ public class RoundButton extends Entity
 	private final Color OFF = new Color(66, 137, 244);
 	private final Color CLICKED = new Color(255, 157, 38);
 
-	public RoundButton(String text, int x, int y, int radius)
+	public RoundButton(String text, int x, int y, int radius, int number)
 	{
-		super(EntID.ROUNDBUTTON, 214); //graphics generated -> MOUSEOFF case
+		super(EntID.ROUNDBUTTON, 214, number); //graphics generated -> MOUSEOFF case
 		this.x = x;
 		this.y = y;
 		r = radius;
@@ -100,7 +100,6 @@ public class RoundButton extends Entity
 		g.setColor(Color.BLACK);
 		g.setFont(font);
 		g.drawString(text, x - textOffsetX, y + textOffsetY);
-		g.drawString(text, x - textOffsetX, y + textOffsetY);
 	}
 
 	//Getter Methods
@@ -110,10 +109,10 @@ public class RoundButton extends Entity
 	public double getY() {
 		return this.y;
 	}
-	public double getLength() {
+	public int getLength() {
 		return this.length;
 	}
-	public double getWidth() {
+	public int getWidth() {
 		return this.width;
 	}
 	public EntID getID(){
@@ -121,14 +120,21 @@ public class RoundButton extends Entity
 	}
 
 	//Setter Methods
-	public void setLength(double nLength){
+	public void setLength(int nLength){
 		this.length = nLength;
 	}
-	public void setWidth(double nWidth){
+	public void setWidth(int nWidth){
 		this.width = nWidth;
 	}
 	public void setID(int nID){
 		//this.ID = nID;
+	}
+
+	@Override
+	public Point getLoc()
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override

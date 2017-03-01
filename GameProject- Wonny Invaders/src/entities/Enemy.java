@@ -1,14 +1,15 @@
 package entities;
 
 import java.awt.Graphics;
+import java.awt.Point;
 
 public class Enemy extends Entity {
 	int health;
 	double speed;
 	double accel;
 
-	public Enemy(double nX, double nY, double nLength, double nWidth, int nHealth) {
-		super(EntID.ENEMY, -1);/**ADD ENEMIES*/
+	public Enemy(double nX, double nY, int nLength, int nWidth, int nHealth, int number) {
+		super(EntID.ENEMY, -1, number);/**ADD ENEMIES*/
 		x = nX;
 		y = nY;
 		length = nLength;
@@ -38,10 +39,10 @@ public class Enemy extends Entity {
 		public double getY() {
 			return this.y;
 		}
-		public double getLength() {
+		public int getLength() {
 			return this.length;
 		}
-		public double getWidth() {
+		public int getWidth() {
 			return this.width;
 		}
 		public EntID getID(){
@@ -65,10 +66,10 @@ public class Enemy extends Entity {
 		public void setY(double nY){
 			this.y = nY;
 		}
-		public void setLength(double nLength){
+		public void setLength(int nLength){
 			this.length = nLength;
 		}
-		public void setWidth(double nWidth){
+		public void setWidth(int nWidth){
 			this.width = nWidth;
 		}
 		public void setID(int nID){
@@ -82,5 +83,12 @@ public class Enemy extends Entity {
 		}
 		public void setAccel(double a){
 			this.accel = a;
+		}
+
+		@Override
+		public Point getLoc()
+		{
+			// TODO Auto-generated method stub
+			return null;
 		}
 		}

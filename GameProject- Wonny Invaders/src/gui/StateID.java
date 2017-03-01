@@ -2,5 +2,5 @@ package gui;
 
 public enum StateID
 {
-	MENU,
+	MENU, GAME
 }

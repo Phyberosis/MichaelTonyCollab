@@ -44,7 +44,7 @@ public class Interface extends JFrame implements KeyListener, ActionListener{
 	
 	//makes window
 	public Interface(){
-		super("Brain");
+		super("Semantic Engine");
 		setSize(700,500);
 		setResizable(false);
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);

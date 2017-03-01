@@ -19,7 +19,7 @@ public class Log extends JFrame{
 		);
 	
 	public Log(){
-		super("Brain - log");
+		super("Engine - log");
 		setSize(568,520);
 		setResizable(false);
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);

@@ -18,4 +18,10 @@ public abstract class State
 
 	public abstract void tick(double dt);
 	public abstract void render(Graphics g);
+
+	// crossthread sync mechanism of debug info -> add " synchronized " to resulting methods
+	public abstract void setDebugInfo(String str);
+	public abstract String getDebugInfo();
+	protected abstract String setGetDebugInfo(boolean set, String str);
 }
+
