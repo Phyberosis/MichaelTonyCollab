@@ -51,7 +51,7 @@ public class Interface extends JFrame implements KeyListener, ActionListener{
 		setLocationRelativeTo(null);
 		btnClose = new Button("close");
 		btnConfused = new Button("I'm confused");
-	
+		
 		p.add(scroll);
 		label.setText("       Speak to me                                           ");
 		label2.setText("*");

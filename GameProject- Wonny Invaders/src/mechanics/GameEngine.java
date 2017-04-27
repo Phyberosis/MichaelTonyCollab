@@ -44,7 +44,7 @@ public class GameEngine {
 		gameState.tick(dt);
 
 		//debug
-		if(System.currentTimeMillis() - lastUpdate > 150)
+		if(System.currentTimeMillis() - lastUpdate > 1)
 		{
 			debugInfo = b.getDebugInfo() + "\n"
 					+ gameState.getDebugInfo();

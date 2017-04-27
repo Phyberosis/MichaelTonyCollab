@@ -21,7 +21,7 @@ public class memoryHandler {
 		intFreeIdxs = new ArrayList<Integer>();
 		
 		try {
-			strLoc = Main.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath().toString();
+			strLoc = AI2.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath().toString();
 			strLoc = strLoc.substring(0, strLoc.lastIndexOf("/") - 3) + "Cranium/";
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
@@ -133,7 +133,7 @@ public class memoryHandler {
 		String strLoc = "";
 		
 		try {
-			strLoc = Main.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath().toString(); //address of bin
+			strLoc = AI2.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath().toString(); //address of bin
 			strLoc = strLoc.substring(0, strLoc.lastIndexOf("/") - 3) + "Cranium/"; //out of bin, in to folder cranium
 		} catch (URISyntaxException e) {
 			e.printStackTrace();

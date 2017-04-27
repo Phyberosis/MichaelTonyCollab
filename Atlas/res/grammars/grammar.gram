@@ -1,0 +1,10 @@
+/**
+ * JSGF Grammar 
+ */
+
+grammar main;
+
+public <words>   = (test | hello | hi | okay | no | yes);
+public <numbers> = (one | two | three| four| five | six | seven | eight | nine | ten);
+public <action>  = (atlas | shell | exit | division | multiply);
+public <final>   = (show result);

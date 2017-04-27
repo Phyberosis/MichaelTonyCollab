@@ -26,7 +26,7 @@ public class Player extends Entity {
 		super(EntID.PLAYER, 1, 0); // use res 1, 0th player
 		x = nX;
 		y = nY;
-		setWidth(130);
+		setWidth(130);	
 		setLength(160);
 		health = nHealth;
 
@@ -34,11 +34,11 @@ public class Player extends Entity {
 		animationIndex = 1;		// MUST SYNC WITH RES # IN SUPER
 		animationCounter = 0;	// Increments with dt in tick until next animation frame
 		
-		MAXSPEED = 4;
+		MAXSPEED = 1;
 		XBOUND = xb - (width/2);
 		YBOUND = yb - (length/2);
 		
-		ARATE = 0.015;
+		ARATE = 0.01;
 	}
 
 	public double getARate()
@@ -104,7 +104,7 @@ public class Player extends Entity {
 	
 	private void passiveSlow(double dt)
 	{
-		double factor = 2.0;
+		double factor = 4.0;
 		
 		if(ax == 0 && dx != 0)
 		{
@@ -125,6 +125,7 @@ public class Player extends Entity {
 			}
 		}
 		
+		//zero approximation
 		if (dx < ARATE*dt/factor && dx > -ARATE*dt/factor)
 		{
 			dx = 0.0;
